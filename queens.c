@@ -168,7 +168,7 @@ void queens_bits(int x[], int n)
     bitcal(0, 0, 0, x, n);
 }
 
-int main(int argc, const char *argv[])
+int t_main(int argc, const char *argv[])
 {
     int x[500]={0};
     int n=9;
