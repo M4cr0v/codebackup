@@ -13,7 +13,7 @@ AC_PROG_CC
 # Checks for libraries.
 
 # Checks for header files.
-AC_CHECK_HEADERS([memory.h stdlib.h string.h gcd.h xForce.h])
+AC_CHECK_HEADERS([memory.h stdlib.h string.h gcd.h xForce.h byte_alignment.h list.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 

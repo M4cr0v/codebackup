@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  xForce.h
+ *       Filename:  byte_alignment.h
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  2012年09月16日 10时49分19秒
+ *        Created:  2012年09月24日 10时54分26秒
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,16 +15,18 @@
  *
  * =====================================================================================
  */
-#ifndef _XFORCE_
-#define _XFORCE_ 1
+
+#ifndef _BYTE_ALIGNMENT_
+#define _BYTE_ALIGNMENT_ 1
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "gcd.h"
-#include "byte_alignment.h"
-#include "list.h"
+#include <stdio.h>
+//#pragma pack (8)
+extern void byte_alignment_test(void);
+
 
 #ifdef __cplusplus
 }

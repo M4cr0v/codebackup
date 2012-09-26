@@ -24,16 +24,23 @@ int main(int argc, const char *argv[])
 {
     char menu = 0;
     while (1) {
-        printf("********** Function Menu: **********\n");
-        printf("************************************\n");
-        printf("1. gcd test.\n");
-        printf("9. exit.\n");
-        printf("************************************\n");
-        printf("Please input number to select:\n");
-        scanf("%d",&menu);
+        if (menu != '\n') {
+            printf("********** Function Menu: **********\n");
+            printf("************************************\n");
+            printf("1. gcd test.\n");
+            printf("2. byte_alignment test.\n");
+            printf("3. list test.\n");
+            printf("q. exit.\n");
+            printf("************************************\n");
+            printf("Please input number to select:\n");
+        }
+        
+        scanf("%c", &menu);
         switch (menu) {
-            case 1: gcd_test();break;
-            case 9: return 0;
+            case '1': gcd_test();break;
+            case '2': byte_alignment_test();break;
+            case '3': ListTest();break;
+            case 'q': return 0;
             default: break;
         }
     }
