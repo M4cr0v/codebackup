@@ -15,7 +15,9 @@
  *
  * =====================================================================================
  */
-#include "byte_alignment.h"
+
+#include <stdio.h>
+//#pragma pack (8)
 
 void byte_alignment_test(void)
 {

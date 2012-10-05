@@ -15,15 +15,35 @@
  *
  * =====================================================================================
  */
-#include "list.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <error.h>
+#include <errno.h>
 
+#define LIST_PTR
+//#define LIST_CURSOR
+
+#ifdef LIST_PTR
+typedef struct Node *PtrToNode;
+#endif
+
+#ifdef LIST_CURSOR
+#define SpaceSize 100
+typedef int PtrToNode;
+void InitializeCursorSpace(void);
+#endif
+
+typedef int ElementType;
+typedef PtrToNode List;
+typedef PtrToNode Position;
 struct Node {
     ElementType Element;
     Position Next;
 } /* optional variable list */;
 
+
 #ifdef LIST_PTR
-List MakeEmpty(List L)
+static List MakeEmpty(List L)
 {
     Position P, Temp;
     P = L->Next;
@@ -37,17 +57,17 @@ List MakeEmpty(List L)
     return L;
 }
 
-int IsEmpty(List L)
+static int IsEmpty(List L)
 {
     return L->Next == NULL;
 }
 
-int IsLast(Position P, List L)
+static int IsLast(Position P, List L)
 {
     return P->Next == NULL; 
 }
 
-Position Find(ElementType X, List L)
+static Position Find(ElementType X, List L)
 {
     Position P=L->Next;
     while (P != NULL && P->Element != X) {
@@ -56,7 +76,7 @@ Position Find(ElementType X, List L)
     return P;
 }
 
-Position FindPrevious(ElementType X, List L)
+static Position FindPrevious(ElementType X, List L)
 {
     Position P=L;
     while (P->Next != NULL && P->Next->Element != X) {
@@ -65,7 +85,7 @@ Position FindPrevious(ElementType X, List L)
     return P;
 }
 
-void Delete(ElementType X, List L)
+static void Delete(ElementType X, List L)
 {
     Position P, TempCell;
     P = FindPrevious(X, L);
@@ -76,7 +96,7 @@ void Delete(ElementType X, List L)
     }
 }
 
-void Insert(ElementType X, List L, Position P)
+static void Insert(ElementType X, List L, Position P)
 {
     Position TempCell;
     TempCell = malloc(sizeof(struct Node));
@@ -89,7 +109,7 @@ void Insert(ElementType X, List L, Position P)
     P->Next = TempCell;
 }
 
-void DeleteList(List L)
+static void DeleteList(List L)
 {
     Position P, Temp;
     P = L->Next;
@@ -101,33 +121,33 @@ void DeleteList(List L)
     }
 }
 
-Position Header(List L)
+static Position Header(List L)
 {
     return L;
 }
 
-Position First(List L)
+static Position First(List L)
 {
     return L->Next;
 }
 
-Position Advance(Position P)
+static Position Advance(Position P)
 {
     return P->Next;
 }
 
-ElementType Retrieve(Position P)
+static ElementType Retrieve(Position P)
 {
     return P->Element;
 }
 
-List CreatList(int size)
+static List CreatList(int size)
 {
     Position Head, P;
     int i, NodeSize;
     NodeSize = sizeof(struct Node);
 
-//    //if you malloc all nodes' space once, then you cannot free a single node later
+//    //if you allocate all nodes' space once, then you cannot free a single node later
 //    if ((Head = malloc(NodeSize * (size+1)))==NULL) {
 //        error_at_line(0, errno, __FILE__, __LINE__, "%s", "malloc");
 //    }
@@ -151,7 +171,7 @@ List CreatList(int size)
     return Head;
 }
 
-List ReverseList(List L)
+static List ReverseList(List L)
 {
     Position P1, P2, P3;
     if (L==NULL || L->Next==NULL) {
@@ -215,9 +235,9 @@ void ListTest(void)
 
 
 #ifdef LIST_CURSOR
-struct Node CursorSpace[SpaceSize];
+static struct Node CursorSpace[SpaceSize];
 
-void InitializeCursorSpace(void)
+static void InitializeCursorSpace(void)
 {
     int i;
     for (i = 0; i < SpaceSize; i++) {
@@ -242,7 +262,7 @@ static void CursorFree(Position P)
     CursorSpace[0].Next = P;
 }
 
-List MakeEmpty(List L)
+static List MakeEmpty(List L)
 {
     Position P;
     P = L;
@@ -255,17 +275,17 @@ List MakeEmpty(List L)
     return L;
 }
 
-int IsEmpty(const List L)
+static int IsEmpty(const List L)
 {
     return CursorSpace[L].Next == 0;
 }
 
-int IsLast(const Position P, const List L)
+static int IsLast(const Position P, const List L)
 {
     return CursorSpace[P].Next == 0;
 }
 
-Position Find(ElementType X, const List L)
+static Position Find(ElementType X, const List L)
 {
     Position P;
     P = CursorSpace[L].Next;
@@ -275,7 +295,7 @@ Position Find(ElementType X, const List L)
     return P;
 }
 
-void Delete(ElementType X, const List L)
+static void Delete(ElementType X, const List L)
 {
     Position P, TempCell;
     P = FindPrevious(X, L);
@@ -286,7 +306,7 @@ void Delete(ElementType X, const List L)
     }
 }
 
-Position FindPrevious(ElementType X, const List L)
+static Position FindPrevious(ElementType X, const List L)
 {
     Position P;
     P = L;
@@ -296,7 +316,7 @@ Position FindPrevious(ElementType X, const List L)
     return P;
 }
 
-void Insert(ElementType X, List L, Position P)
+static void Insert(ElementType X, List L, Position P)
 {
     Position TempCell;
     TempCell = CursorAlloc();
@@ -308,7 +328,7 @@ void Insert(ElementType X, List L, Position P)
     CursorSpace[P].Next = TempCell;
 }
 
-void DeleteList(List L)
+static void DeleteList(List L)
 {
     Position P;
     P = L;
@@ -320,27 +340,27 @@ void DeleteList(List L)
     CursorSpace[L].Next = 0;
 }
 
-Position Header(const List L)
+static Position Header(const List L)
 {
     return L;
 }
 
-Position First(const List L)
+static Position First(const List L)
 {
     return CursorSpace[L].Next;
 }
 
-Position Advance(const Position P)
+static Position Advance(const Position P)
 {
     return CursorSpace[P].Next;
 }
 
-ElementType Retrieve(const Position P)
+static ElementType Retrieve(const Position P)
 {
     return CursorSpace[P].Element;
 }
 
-List CreatList(int size)
+static List CreatList(int size)
 {
     Position Head, P=0;
     int i;
@@ -356,7 +376,7 @@ List CreatList(int size)
     return Head;
 }
 
-List ReverseList(List L)
+static List ReverseList(List L)
 {
     Position P1, P2, P3;
     if (L==0 || CursorSpace[L].Next==0) {

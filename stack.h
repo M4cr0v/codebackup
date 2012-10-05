@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  byte_alignment.h
+ *       Filename:  stack.h
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  2012年09月24日 10时54分26秒
+ *        Created:  2012年10月03日 16时14分21秒
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,16 +16,19 @@
  * =====================================================================================
  */
 
-#ifndef _BYTE_ALIGNMENT_
-#define _BYTE_ALIGNMENT_ 1
+#ifndef _STACK_
+#define _STACK_ 1
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern void byte_alignment_test(void);
+void infix_to_prefix(char *Dest, const char *Src);
+void infix_to_prefix_test(void);
+
 
 #ifdef __cplusplus
 }
 #endif
+
 #endif

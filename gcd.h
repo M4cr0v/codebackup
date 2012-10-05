@@ -22,9 +22,7 @@
 extern "C" {
 #endif
 
-#include <stdio.h>
 extern void gcd_test(void);
-
 
 #ifdef __cplusplus
 }

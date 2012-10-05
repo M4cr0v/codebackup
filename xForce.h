@@ -22,9 +22,6 @@
 extern "C" {
 #endif
 
-#include "gcd.h"
-#include "byte_alignment.h"
-#include "list.h"
 
 #ifdef __cplusplus
 }
