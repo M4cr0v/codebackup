@@ -51,7 +51,8 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_xForce_OBJECTS = xForce.$(OBJEXT) gcd.$(OBJEXT) \
-	byte_alignment.$(OBJEXT) list.$(OBJEXT) stack.$(OBJEXT)
+	byte_alignment.$(OBJEXT) list.$(OBJEXT) stack.$(OBJEXT) \
+	queue.$(OBJEXT)
 xForce_OBJECTS = $(am_xForce_OBJECTS)
 xForce_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.
@@ -164,7 +165,7 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 AUTOMAKE_OPTIONS = foreign
-xForce_SOURCES = xForce.c gcd.c byte_alignment.c list.c stack.c
+xForce_SOURCES = xForce.c gcd.c byte_alignment.c list.c stack.c queue.c
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -271,6 +272,7 @@ distclean-compile:
 include ./$(DEPDIR)/byte_alignment.Po
 include ./$(DEPDIR)/gcd.Po
 include ./$(DEPDIR)/list.Po
+include ./$(DEPDIR)/queue.Po
 include ./$(DEPDIR)/stack.Po
 include ./$(DEPDIR)/xForce.Po
 
