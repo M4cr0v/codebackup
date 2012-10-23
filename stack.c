@@ -184,6 +184,6 @@ void infix_to_prefix_test(void)
     char s[] = "a+(b-(c+d)*e)-f";
     char d[20] = {'\0'};
     infix_to_prefix(d, s);
-    printf("Origin infix string: %s\n", s);
+    printf("Original infix string: %s\n", s);
     printf("Converted prefix string: %s\n", d);
 }

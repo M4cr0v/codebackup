@@ -22,6 +22,9 @@
 #include "list.h"
 #include "stack.h"
 #include "queue.h"
+#include "sort.h"
+#include "kmp.h"
+#include "bits.h"
 
 int main(int argc, const char *argv[])
 {
@@ -35,6 +38,9 @@ int main(int argc, const char *argv[])
             printf("3. list test.\n");
             printf("4. infix to prefix(with stack) test.\n");
             printf("5. queue test.\n");
+            printf("6. sort test.\n");
+            printf("7. kmp test.\n");
+            printf("8. bits test.\n");
             printf("q. exit.\n");
             printf("************************************\n");
             printf("Please input number to select:\n");
@@ -47,6 +53,9 @@ int main(int argc, const char *argv[])
             case '3': ListTest();break;
             case '4': infix_to_prefix_test();break;
             case '5': queue_test();break;
+            case '6': sort_test();break;
+            case '7': kmp_test();break;
+            case '8': bits_test();break;
             case 'q': return 0;
             default: break;
         }

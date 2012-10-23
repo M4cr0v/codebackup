@@ -215,7 +215,7 @@ void ListTest(void)
         P = P->Next;
     }
 
-    printf("Origin List:\n");
+    printf("Original List:\n");
     PrintList(L);
     
     P = FindPrevious(temp, L);
@@ -420,7 +420,7 @@ void ListTest(void)
         CursorSpace[P].Element = i;
         P = CursorSpace[P].Next;
     }
-    printf("Origin List:\n");
+    printf("Original List:\n");
     PrintList(L);
 
     P = FindPrevious(temp, L);
