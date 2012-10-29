@@ -144,6 +144,38 @@ int log2simple(int x)
     return i;
 }
 
+int log2bits(int x)
+{
+    int n;
+
+    if (x==0) {
+        return 0;
+    }
+    n = 0;
+    if (x>>16) {
+        n += 16;
+        x >>= 16;
+    }
+    if (x>>8) {
+        n += 8;
+        x >>= 8;
+    }
+    if (x>>4) {
+        n += 4;
+        x >>= 4;
+    }
+    if (x>>2) {
+        n += 2;
+        x >>= 2;
+    }
+    if (x>>1) {
+        n += 1;
+        x >>= 1;
+    }
+    return n;
+
+}
+
 void bitcal(int row, int ld, int rd, int x[], int n)
 {
     char maxbits=32;
