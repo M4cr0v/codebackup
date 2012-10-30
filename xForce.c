@@ -25,6 +25,7 @@
 #include "sort.h"
 #include "kmp.h"
 #include "bits.h"
+#include "bignumber.h"
 
 int main(int argc, const char *argv[])
 {
@@ -41,6 +42,7 @@ int main(int argc, const char *argv[])
             printf("6. sort test.\n");
             printf("7. kmp test.\n");
             printf("8. bits test.\n");
+            printf("9. big number multiplication test.\n");
             printf("q. exit.\n");
             printf("************************************\n");
             printf("Please input number to select:\n");
@@ -56,6 +58,7 @@ int main(int argc, const char *argv[])
             case '6': sort_test();break;
             case '7': kmp_test();break;
             case '8': bits_test();break;
+            case '9': MBN_test();break;
             case 'q': return 0;
             default: break;
         }

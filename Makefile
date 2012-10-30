@@ -52,7 +52,8 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_xForce_OBJECTS = xForce.$(OBJEXT) gcd.$(OBJEXT) \
 	byte_alignment.$(OBJEXT) list.$(OBJEXT) stack.$(OBJEXT) \
-	queue.$(OBJEXT) sort.$(OBJEXT) kmp.$(OBJEXT) bits.$(OBJEXT)
+	queue.$(OBJEXT) sort.$(OBJEXT) kmp.$(OBJEXT) bits.$(OBJEXT) \
+	bignumber.$(OBJEXT)
 xForce_OBJECTS = $(am_xForce_OBJECTS)
 xForce_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.
@@ -165,7 +166,7 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 AUTOMAKE_OPTIONS = foreign
-xForce_SOURCES = xForce.c gcd.c byte_alignment.c list.c stack.c queue.c sort.c kmp.c bits.c
+xForce_SOURCES = xForce.c gcd.c byte_alignment.c list.c stack.c queue.c sort.c kmp.c bits.c bignumber.c
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -269,6 +270,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/bignumber.Po
 include ./$(DEPDIR)/bits.Po
 include ./$(DEPDIR)/byte_alignment.Po
 include ./$(DEPDIR)/gcd.Po
