@@ -135,7 +135,7 @@ int num_of_one(int x)
     
 }
 
-int log2simple(int x)
+static int log2simple(int x)
 {
     int i=0;
     while ((1<<i)!=x) {
@@ -144,41 +144,48 @@ int log2simple(int x)
     return i;
 }
 
-int log2bits(int x)
+static int log2bits(int x)
 {
-    int n;
+    int n, sh;
 
     if (x==0) {
         return 0;
     }
     n = 0;
-    if (x>>16) {
-        n += 16;
-        x >>= 16;
+    sh = sizeof(x)<<3;
+    while (sh>>=1) {
+        if (x>>sh) {
+            n += sh;
+            x >>= sh;
+        } 
     }
-    if (x>>8) {
-        n += 8;
-        x >>= 8;
-    }
-    if (x>>4) {
-        n += 4;
-        x >>= 4;
-    }
-    if (x>>2) {
-        n += 2;
-        x >>= 2;
-    }
-    if (x>>1) {
-        n += 1;
-        x >>= 1;
-    }
+//    if (x>>16) {
+//        n += 16;
+//        x >>= 16;
+//    }
+//    if (x>>8) {
+//        n += 8;
+//        x >>= 8;
+//    }
+//    if (x>>4) {
+//        n += 4;
+//        x >>= 4;
+//    }
+//    if (x>>2) {
+//        n += 2;
+//        x >>= 2;
+//    }
+//    if (x>>1) {
+//        n += 1;
+//        x >>= 1;
+//    }
     return n;
 
 }
 
 void bitcal(int row, int ld, int rd, int x[], int n)
 {
-    char maxbits=32;
+    int maxbits=32;
     int upperlimit=(0xFFFFFFFF<<(maxbits-n))>>(maxbits-n);
     int pos, p;
     if ((row&upperlimit)!=upperlimit) {
@@ -200,7 +207,7 @@ void queens_bits(int x[], int n)
     bitcal(0, 0, 0, x, n);
 }
 
-int t_main(int argc, const char *argv[])
+int queens_test(void)
 {
     int x[500]={0};
     int n=9;

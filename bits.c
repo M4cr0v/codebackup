@@ -18,7 +18,7 @@
 
 #include <stdio.h>
 
-int log2bits(int x)
+static int log2bits(int x)
 {
     int n, sh;
 

@@ -53,7 +53,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_xForce_OBJECTS = xForce.$(OBJEXT) gcd.$(OBJEXT) \
 	byte_alignment.$(OBJEXT) list.$(OBJEXT) stack.$(OBJEXT) \
 	queue.$(OBJEXT) sort.$(OBJEXT) kmp.$(OBJEXT) bits.$(OBJEXT) \
-	bignumber.$(OBJEXT)
+	bignumber.$(OBJEXT) queens.$(OBJEXT)
 xForce_OBJECTS = $(am_xForce_OBJECTS)
 xForce_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.
@@ -166,7 +166,7 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 AUTOMAKE_OPTIONS = foreign
-xForce_SOURCES = xForce.c gcd.c byte_alignment.c list.c stack.c queue.c sort.c kmp.c bits.c bignumber.c
+xForce_SOURCES = xForce.c gcd.c byte_alignment.c list.c stack.c queue.c sort.c kmp.c bits.c bignumber.c queens.c
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -276,6 +276,7 @@ include ./$(DEPDIR)/byte_alignment.Po
 include ./$(DEPDIR)/gcd.Po
 include ./$(DEPDIR)/kmp.Po
 include ./$(DEPDIR)/list.Po
+include ./$(DEPDIR)/queens.Po
 include ./$(DEPDIR)/queue.Po
 include ./$(DEPDIR)/sort.Po
 include ./$(DEPDIR)/stack.Po
