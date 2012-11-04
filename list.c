@@ -206,7 +206,6 @@ void PrintList(List L)
 void ListTest(void)
 {
     int l=10, i, temp=3;
-    int *memtest;
     List L, P;
     L = CreatList(l);
     P = L->Next;

@@ -13,13 +13,14 @@ AC_PROG_CC
 # Checks for libraries.
 
 # Checks for header files.
-AC_CHECK_HEADERS([memory.h stdlib.h string.h gcd.h xForce.h byte_alignment.h list.h stack.h queue.h sort.h kmp.h bits.h bignumber.h queens.h])
+AC_CHECK_HEADERS([memory.h stdlib.h string.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
 AC_FUNC_MALLOC
-AC_CHECK_FUNCS([gettimeofday])
+AC_FUNC_ERROR_AT_LINE
+AC_CHECK_FUNCS([sqrt])
 
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

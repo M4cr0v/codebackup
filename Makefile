@@ -53,7 +53,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_xForce_OBJECTS = xForce.$(OBJEXT) gcd.$(OBJEXT) \
 	byte_alignment.$(OBJEXT) list.$(OBJEXT) stack.$(OBJEXT) \
 	queue.$(OBJEXT) sort.$(OBJEXT) kmp.$(OBJEXT) bits.$(OBJEXT) \
-	bignumber.$(OBJEXT) queens.$(OBJEXT)
+	bignumber.$(OBJEXT) queens.$(OBJEXT) prime.$(OBJEXT)
 xForce_OBJECTS = $(am_xForce_OBJECTS)
 xForce_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.
@@ -87,7 +87,7 @@ AUTOMAKE = ${SHELL} /home/m4cr0v/files/codebackup/missing --run automake-1.11
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2
+CFLAGS = -g -O2 -lm -Wall
 CPP = gcc -E
 CPPFLAGS = 
 CYGPATH_W = echo
@@ -166,7 +166,7 @@ top_build_prefix =
 top_builddir = .
 top_srcdir = .
 AUTOMAKE_OPTIONS = foreign
-xForce_SOURCES = xForce.c gcd.c byte_alignment.c list.c stack.c queue.c sort.c kmp.c bits.c bignumber.c queens.c
+xForce_SOURCES = xForce.c gcd.c byte_alignment.c list.c stack.c queue.c sort.c kmp.c bits.c bignumber.c queens.c prime.c
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -276,6 +276,7 @@ include ./$(DEPDIR)/byte_alignment.Po
 include ./$(DEPDIR)/gcd.Po
 include ./$(DEPDIR)/kmp.Po
 include ./$(DEPDIR)/list.Po
+include ./$(DEPDIR)/prime.Po
 include ./$(DEPDIR)/queens.Po
 include ./$(DEPDIR)/queue.Po
 include ./$(DEPDIR)/sort.Po

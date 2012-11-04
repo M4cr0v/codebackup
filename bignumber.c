@@ -16,6 +16,8 @@
  * =====================================================================================
  */
 #include <stdio.h>
+#include <error.h>
+#include <errno.h>
 
 //MultiplicationOfBigNumber
 void MBN(unsigned char x[], int lengthx, unsigned char y[], int lengthy,unsigned char r[], int lengthr)

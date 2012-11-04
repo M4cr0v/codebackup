@@ -45,6 +45,7 @@ int main(int argc, const char *argv[])
         printf("8. bits test.\n");
         printf("9. big number multiplication test.\n");
         printf("10. eight queens test.\n");
+        printf("11. prime test.\n");
         printf("0. exit.\n");
         printf("************************************\n");
         printf("Please input number to select:\n");
@@ -62,6 +63,7 @@ int main(int argc, const char *argv[])
             case 8: bits_test();break;
             case 9: MBN_test();break;
             case 10: queens_test();break;
+            case 11: prime_test();break;
             case 0: return 0;
             default: break;
         }

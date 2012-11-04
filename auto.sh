@@ -4,5 +4,5 @@ aclocal
 autoconf
 autoheader
 automake --add-missing
-./configure
+./configure CFLAGS="-g -O2 -lm -Wall"
 make
